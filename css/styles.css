@@ -1,6 +1,7 @@
 body { 
     background-color: Black;
-    color: White 
+    color: White;
+    margin: 20px 40% auto 0;
 }	
 
 .gallery {
@@ -40,13 +41,14 @@ body {
    
 .gallery__caption {
     /* visibility: none;  */
-    opacity: 0.1;
+    opacity: 1;
     transition: opacity 0.3s;
 }
 
 .gallery__item {
     position: relative;
-    border: 1px solid white; /* Helps with debugging! */
+    /* Helps with debugging! */
+    /* border: 1px solid white; */
     /* padding: 20px; */
 }
 
@@ -72,6 +74,19 @@ p {
     color:floralwhite;
 }
 
-body {
-    margin: 20px 40% auto 0;
+aside {
+    display:block;
+    position:absolute;
+    overflow:hidden;
+    z-index:10;
+    top:0;
+    bottom:0
+}
+
+.horizontal {
+    float: left;
+}
+.horizontal *{
+    /* display: inline-block; */
+    margin-left: 10px;
 }
