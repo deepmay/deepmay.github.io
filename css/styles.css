@@ -3,13 +3,18 @@ body {
     color: White;
 }	
 
+#main-content {
+   margin: auto 15%; 
+}
+
 #student-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    column-gap: 10%;
+    column-gap: 5%;
     /* border: 1px solid white; */
     max-width: 65%;
     row-gap: 30px;
+    margin: 0 15%;
 }
 
 .gallery_item {
@@ -22,7 +27,9 @@ body {
 }
 
 .gallery_caption {
-    font-family: monospace;
+    font-family: Andale Mono;
+    font-style: italic;
+    font-size: 14pt;
     text-align: center;
     position: absolute;
     left: 50%;
@@ -47,12 +54,8 @@ p {
     color:floralwhite;
 }
 
-a:link {
+a:link, a:visited {
     color: floralwhite;
-}
-
-a:visited {
-    color: darkgray;
 }
 
 trapezoid {
@@ -63,3 +66,7 @@ trapezoid {
     width: 160px;
     height: 0px;
  }
+
+.fill-white {
+    fill: #fff;
+}
