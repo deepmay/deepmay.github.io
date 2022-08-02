@@ -68,6 +68,9 @@ h2 {
 
 a:link, a:visited {
     color: floralwhite;
+}
+
+.gallery_item a:link, a:visited {
     text-decoration: none;
 }
 
