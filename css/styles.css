@@ -36,6 +36,12 @@ iframe {
 .gallery_img {
     max-width: 100%;
     object-fit: scale-down;
+    filter: blur(0.1rem) grayscale();
+    transition: 0.1s;
+}
+
+.gallery_img:hover {
+    filter: none;
 }
 
 .gallery_caption {

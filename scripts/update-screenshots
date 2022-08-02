@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+""" Update the gallery screenshots of student pages. """
+
+import shutil
+import subprocess
+
+import bs4
+
+CHROME_BIN = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+SCREENSHOT_SIZE = "1200,800"
+
+
+def main():
+    """Fetch images,"""
+    with open("./index.html", encoding="UTF-8") as f:
+        soup = bs4.BeautifulSoup(f, features="html.parser")
+
+    gallery: bs4.Tag = soup.find(id="student-gallery").find_all("a")
+
+    assert gallery, "Couldn't find #student-gallery in index.html"
+
+    for anchor in gallery:
+        url = anchor.attrs["href"]
+
+        if not url:
+            continue
+
+        # Each gallery image is captioned by the student name
+        # Use that to keep track of screenshot filenames
+        student_name: str = anchor.find(class_="gallery_caption").text
+        student_name = student_name.split()[0].lower()
+
+        print(f"[update-screenshots] Fetching {url} for {student_name}... ")
+
+        subprocess.check_call(
+            [
+                CHROME_BIN,
+                "--headless",
+                "--disable-gpu",
+                "--screenshot",
+                f"--window-size={SCREENSHOT_SIZE}",
+                url,
+            ],
+            # stderr=subprocess.PIPE
+        )
+
+        # Serving directory
+        shutil.copyfile("./screenshot.png", f"./images/gallery/{student_name}.png")
+
+
+if __name__ == "__main__":
+    main()
