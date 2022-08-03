@@ -80,7 +80,7 @@ body {
     transition: 0.1s;
 }
 
-.gallery_img:hover {
+.gallery_item:hover .gallery_img {
     filter: none;
 }
 
